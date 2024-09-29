@@ -18,7 +18,8 @@ async def get_chat_completion(user: Optional[str], formatted_messages: List[Chat
     mapped_accounts = list(map(lambda account: f"{account.name}: ${account.balances.current}", financial_accounts))
     mapped_accounts_str = "\n".join(mapped_accounts)
 
-    prompt_addition = f"""\nThe user has provided their financial accounts and balances. Only use this information if it is relevant to the conversation.
+    prompt_addition = f"""
+    The user has provided their financial accounts and balances. Only use this information if it is relevant to the conversation.
     <user_financial_accounts>
     { mapped_accounts_str }
     </user_financial_accounts>"""
