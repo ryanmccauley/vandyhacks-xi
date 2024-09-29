@@ -5,7 +5,7 @@ from src.routes import plaid
 from fastapi.middleware.cors import CORSMiddleware
 from src.database.client import initialize_database
 
-ALLOWED_ORIGINS = ["http://localhost:5173", "https://vandyhacks-xi.onrender.com"]
+ALLOWED_ORIGINS = ["http://localhost:5173", "https://vandyhacks-xi.onrender.com", "https://moneywise.wiki/"]
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
