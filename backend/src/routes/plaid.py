@@ -63,8 +63,8 @@ async def create_access_token(body: CreateAccessTokenRequest):
       sender=EmailAddress(email="test@emailbarn.com", name="MoneyWise"),
       receiver=EmailAddress(email=body.email)
     ),
-    subject="Welcome to MoneyWise",
-    text="Hi,\n\nYour account has been successfully linked to MoneyWise. You can reply to this email or send a new email to interact with the assistant.\n\nBest,\nMoneyWise Team",
+    subject="Welcome to MoneyWise 🤑",
+    text="Hi,\n\nYour financial acounts has been successfully linked to MoneyWise. You can reply to this email or send a new email to interact with the assistant.\n\nBest,\nMoneyWise Team",
   )
   mime = email_message.build_to_mime_message()
 
