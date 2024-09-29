@@ -104,13 +104,14 @@ const ConnectAccountButton = () => {
     })()
   }, [])
 
-  const onSuccess = useCallback<PlaidLinkOnSuccess>(async (publicToken, metadata) => {
+  const onSuccess = useCallback<PlaidLinkOnSuccess>(async (publicToken, _) => {
     const payload = {
       user: user?.sub,
       email: user?.email,
       public_token: publicToken,
     }
-    const response = await fetch(
+
+    await fetch(
       config.api.baseUrl + "/plaid/access-token",
       {
         method: "POST",
@@ -118,7 +119,6 @@ const ConnectAccountButton = () => {
         body: JSON.stringify(payload)
       }
     )
-    const { access_token: accessToken } = await response.json()
     
     setConnected(true)
   }, [])
