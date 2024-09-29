@@ -60,7 +60,7 @@ async def create_access_token(body: CreateAccessTokenRequest):
 
   email_message = RawEmailMessage(
     participants=EmailParticipants(
-      sender=EmailAddress(email="test@emailbarn.com", name="MoneyWise"),
+      sender=EmailAddress(email="assistant@moneywise.wiki", name="MoneyWise"),
       receiver=EmailAddress(email=body.email)
     ),
     subject="Welcome to MoneyWise 🤑",

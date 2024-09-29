@@ -47,7 +47,7 @@ async def insert_outgoing_message(
   ))
 
 def format_messages_for_completion(messages) -> List[ChatMessage]:
-    messages = [{ "role": "assistant" if message.sender.email == "test@emailbarn.com" else "user", "content": message.text.split("\n\n")[0] } for message in messages]
+    messages = [{ "role": "assistant" if message.sender.email == "assistant@moneywise.wiki" else "user", "content": message.text.split("\n\n")[0] } for message in messages]
     messages = [{ "role": "system", "content": SYSTEM_PROMPT }, *messages]
 
     return [ChatMessage(**message) for message in messages]
