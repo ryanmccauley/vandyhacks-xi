@@ -91,6 +91,7 @@ const Authenticated = () => {
 const ConnectAccountButton = () => {
   const { user } = useAuth0()
   const [token, setToken] = useState<string | null>(null)
+  const [connected, setConnected] = useState(false)
 
   useEffect(() => {
     (async () => {
@@ -104,8 +105,6 @@ const ConnectAccountButton = () => {
   }, [])
 
   const onSuccess = useCallback<PlaidLinkOnSuccess>(async (publicToken, metadata) => {
-    console.log({ publicToken, metadata })
-
     const payload = {
       user: user?.sub,
       email: user?.email,
@@ -120,14 +119,22 @@ const ConnectAccountButton = () => {
       }
     )
     const { access_token: accessToken } = await response.json()
-
-    console.log({ accessToken })
+    
+    setConnected(true)
   }, [])
 
   const { open, ready } = usePlaidLink({
     token,
     onSuccess
   })
+
+  if (connected) {
+    return (
+      <h2>
+        Your accounts have been connected. You will receive an email shortly.
+      </h2>
+    )
+  }
 
   return (
     <Button
